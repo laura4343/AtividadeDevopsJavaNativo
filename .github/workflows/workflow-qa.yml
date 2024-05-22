@@ -1,17 +1,28 @@
-name: CI_QA
-on: 
+name: Java CI_QA
+ 
+on:
   push:
-    branches: ["QA"]
+    branches: [ "QA" ]
   pull_request:
-    branches: ["QA"] 
+    branches: [ "QA" ]
+ 
 jobs:
-   build:
-     name: PrimeroJob
-     runs-on: ubuntu-latest
-     steps:
-      - uses: actions/checkout@v4
-      - name: Executando o STEP1
-        run: |
-         echo Pipeline rodando em QA
-         echo Aaaaaaaaaaaa
-         echo Eu amo devops ⭐
+  build:
+ 
+    runs-on: ubuntu-latest
+ 
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up JDK 19
+      uses: actions/setup-java@v3
+      with:
+        java-version: '19'
+        distribution: 'temurin'
+    - name: Build with Java
+      run: javac src/Main.java -d out
+    - name: Run Java
+      run: java -cp out Main
+    - name: Mensagem de sucesso
+      run: echo Deu Certo!
+    - name: Ambiente
+      run: echo Usando a Branch de QA
