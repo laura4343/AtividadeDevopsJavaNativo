@@ -1,0 +1,17 @@
+name: CI_QA
+on: 
+  push:
+    branches: ["QA"]
+  pull_request:
+    branches: ["QA"] 
+jobs:
+   build:
+     name: PrimeroJob
+     runs-on: ubuntu-latest
+     steps:
+      - uses: actions/checkout@v4
+      - name: Executando o STEP1
+        run: |
+         echo Pipeline rodando em QA
+         echo Aaaaaaaaaaaa
+         echo Eu amo devops ⭐
