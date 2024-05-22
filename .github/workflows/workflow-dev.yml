@@ -2,9 +2,9 @@ name: Java CI_DEV
  
 on:
   push:
-    branches: [ "DEV" ]
+    branches: [ "dev" ]
   pull_request:
-    branches: [ "DEV" ]
+    branches: [ "dev" ]
  
 jobs:
   build:
