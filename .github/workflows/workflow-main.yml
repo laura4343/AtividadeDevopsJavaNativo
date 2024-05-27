@@ -26,3 +26,21 @@ jobs:
       run: echo Deu Certo!
     - name: Ambiente
       run: echo Usando a Branch de MAIN
+
+    - name: Docker Build & Push Action
+      uses: mr-smithers-excellent/docker-build-push@v6
+      with:
+          # Name of the Docker image
+          image: laura4343/janavativo
+          # Tags override for Docker image
+          tags: v1, latest
+          # Target Docker registry
+          registry:  Docker.io
+          # Location of Dockerfile, if not Dockerfile in root directory
+          dockerfile: Dockerfile
+          # Docker registry username
+          username: ${{secrets.DOCKERHUB_USER}}
+          # Docker registry password
+          password: ${{secrets.DOCKERHUB_PASSWORD}}
+          # GitHub organization to push image to (if not current)
+          
