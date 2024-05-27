@@ -35,7 +35,7 @@ jobs:
           # Tags override for Docker image
           tags: v1, latest
           # Target Docker registry
-          registry:  Docker.io
+          registry: Docker.io
           # Location of Dockerfile, if not Dockerfile in root directory
           dockerfile: Dockerfile
           # Docker registry username
