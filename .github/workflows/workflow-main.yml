@@ -26,6 +26,12 @@ jobs:
       run: echo Deu Certo!
     - name: Ambiente
       run: echo Usando a Branch de MAIN
+    - name: Git Version
+      id: gerador
+      uses: codacy/git-version@2.4.0
+      with:
+          release-branch: main
+          prefix: main-
 
     - name: Docker Build & Push Action
       uses: mr-smithers-excellent/docker-build-push@v6
@@ -33,8 +39,7 @@ jobs:
           # Name of the Docker image
           image: laura4343/javanativo
           # Tags override for Docker image
-          tags: v1, latest, v2
-          # Target Docker registry
+          tags: ${{ github.run_number }}, ${{ steps.gerador.outputs.version }}
           registry: docker.io
           # Location of Dockerfile, if not Dockerfile in root directory
           dockerfile: Dockerfile
@@ -43,4 +48,10 @@ jobs:
           # Docker registry password
           password: ${{secrets.DOCKERHUB_PASSWORD}}
           # GitHub organization to push image to (if not current)
+
+   
           
+                  
+        
+                  
+                  
